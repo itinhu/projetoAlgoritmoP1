@@ -86,5 +86,27 @@ Permitir:
 
 | Módulo | Acesso | Funcionalidades principais |
 | --- | --- | --- |
-| Paciente | CPF e senha; autocadastro quando não houver cadastro | Consultar corpo clínico, agendar, ver consultas futuras e cancelar consultas próprias |
+| Paciente | CPF e senha; autocadastro quando não houver cadastro | Consultar corpo clínico, agendar, ver consultas cadastradas e cancelar consultas próprias |
 | Administração/secretaria | Login e senha | Gerenciar dentistas, consultórios e pacientes; visualizar, filtrar e cancelar consultas |
+
+## Execução
+
+O sistema está implementado em um único arquivo, `main.py`, sem definição de
+funções. Para executá-lo, use Python 3 no terminal:
+
+```bash
+python main.py
+```
+
+O login administrativo inicial é `admin` e a senha é `admin123`. Cadastre
+dentistas e consultórios pelo módulo administrativo e vincule cada dentista a
+um consultório antes de realizar agendamentos. Os dados são mantidos em listas
+somente durante a execução; ao encerrar o programa, são perdidos.
+
+As datas são informadas como `DD/MM/AAAA` e os horários como `HH:MM`. O sistema
+compara esses textos para impedir dois agendamentos para o mesmo dentista ou
+consultório no mesmo horário. Como o projeto não usa a biblioteca `datetime`,
+ele não verifica automaticamente se a data escolhida já passou; informe uma
+data futura. Dentistas com consultas associadas não podem ser removidos; as
+consultas devem ser canceladas primeiro. Ao remover um paciente, suas consultas
+também são removidas.
